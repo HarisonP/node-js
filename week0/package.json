@@ -1,0 +1,16 @@
+{
+  "name": "week0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chirp_client.js",
+  "dependencies": {
+    "argparse": "^0.1.15",
+    "request": "^2.45.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
