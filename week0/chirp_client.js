@@ -36,13 +36,20 @@ function takeArguments(){
 	   ['--key']
 	);
 
-	
+	parser.addArgument(
+	   ['--userId']
+	);
+
 	parser.addArgument(
 	   ['--chirpText']
 	);
 
 	parser.addArgument(
 	   ['--chirpId']
+	);
+	parser.addArgument(
+	   ['--allChirps'],
+	   {action:'storeTrue'} 
 	);
 
 	var args = parser.parseArgs();
@@ -71,12 +78,29 @@ if (args.register) {
 			console.log(body);
 		}
 	);
-}
-else if(args.delChirp){
+}else if(args.delChirp){
 	request({
 		method:'DELETE',
 		uri:"http://localhost:9615/chirp",
 		json:{key: args.key, chirpId: args.chirpId}},
+ 		function(err,res,body) {
+			console.log(body);
+		}
+	);
+}else if(args.allChirps){
+	request({
+		method:'GET',
+		uri:"http://localhost:9615/all_chirps",
+		json:{key: args.key, chirpId: args.chirpId}},
+ 		function(err,res,body) {
+			console.log(body);
+		}
+	);
+}else if(args.chirpId || args.userId){
+	request({
+		method:'GET',
+		uri:"http://localhost:9615/chirps",
+		json:{userId: args.userId, chirpId: args.chirpId}},
  		function(err,res,body) {
 			console.log(body);
 		}
